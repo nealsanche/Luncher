@@ -1,9 +1,9 @@
-package co.touchlab.kampstarter.android
+package dev.nosuch.luncher.android
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.touchlab.kampstarter.android.adapter.MainAdapter
+import dev.nosuch.luncher.android.adapter.MainAdapter
 import co.touchlab.kampstarter.models.BreedModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*

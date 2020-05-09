@@ -9,7 +9,7 @@ plugins {
 android {
     compileSdkVersion(Versions.compile_sdk)
     defaultConfig {
-        applicationId = "co.touchlab.kampstarter"
+        applicationId = "dev.nosuch.luncher"
         minSdkVersion(Versions.min_sdk)
         targetSdkVersion(Versions.target_sdk)
         versionCode = 1

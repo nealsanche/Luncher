@@ -1,10 +1,10 @@
-package co.touchlab.kampstarter.android.adapter
+package dev.nosuch.luncher.android.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import co.touchlab.kampstarter.android.R
+import dev.nosuch.luncher.android.R
 import co.touchlab.kampstarter.db.Breed
 
 class MainAdapter(private val breedClickListener: (Breed) -> Unit) :

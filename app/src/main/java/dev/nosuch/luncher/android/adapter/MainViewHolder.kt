@@ -1,10 +1,10 @@
-package co.touchlab.kampstarter.android.adapter
+package dev.nosuch.luncher.android.adapter
 
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import co.touchlab.kampstarter.android.R
+import dev.nosuch.luncher.android.R
 import co.touchlab.kampstarter.db.Breed
 
 class MainViewHolder(itemView: View, breedClickListener: (Int) -> Unit) : RecyclerView.ViewHolder(itemView) {
