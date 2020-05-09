@@ -2,13 +2,15 @@ package co.touchlab.kampstarter
 
 import co.touchlab.kampstarter.db.Breed
 import co.touchlab.kampstarter.db.KampstarterDb
+import co.touchlab.kampstarter.db.Lunch
+import co.touchlab.kampstarter.models.DateAdapter
 import com.squareup.sqldelight.Query
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class DatabaseHelper(sqlDriver: SqlDriver) {
-    private val dbRef: KampstarterDb = KampstarterDb(sqlDriver)
+    private val dbRef: KampstarterDb = KampstarterDb(sqlDriver, Lunch.Adapter(DateAdapter()))
 
     fun selectAllItems(): Query<Breed> = dbRef.tableQueries.selectAll()
 

@@ -1,0 +1,64 @@
+import co.touchlab.kampstarter.models.Date;
+
+CREATE TABLE Person (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone TEXT NOT NULL
+);
+
+CREATE TABLE Place (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    latitude REAL,
+    longitude REAL
+);
+
+CREATE TABLE Lunch (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    personId INTEGER NOT NULL,
+    placeId INTEGER NOT NULL,
+    pinned INTEGER AS Boolean NOT NULL DEFAULT 0,
+    date INTEGER AS Date NOT NULL,
+    FOREIGN KEY (personId) REFERENCES Person(id),
+    FOREIGN KEY (placeId) REFERENCES Place(id)
+);
+
+selectAllPeople:
+SELECT * FROM Person;
+
+selectAllPlaces:
+SELECT * FROM Place;
+
+selectAll:
+SELECT * FROM Lunch;
+
+selectById:
+SELECT * FROM Lunch WHERE id = ?;
+
+selectByName:
+SELECT * FROM Breed WHERE name = ?;
+
+insertPerson:
+INSERT OR REPLACE INTO Person(id, name, phone)
+VALUES (?,?,?);
+
+insertPlace:
+INSERT OR REPLACE INTO Place(id, name, latitude, longitude)
+VALUES (?,?,?,?);
+
+insertLunch:
+INSERT OR REPLACE INTO Lunch(id, name, personId, placeId, pinned, date)
+VALUES (?,?,?,?,?,?);
+
+deleteAll:
+DELETE FROM Lunch;
+
+deleteLunch:
+DELETE FROM Lunch WHERE id = ?;
+
+deletePlace:
+DELETE FROM Place WHERE id = ?;
+
+updatePinned:
+UPDATE Lunch SET pinned = ? WHERE id = ?;
