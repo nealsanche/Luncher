@@ -1,8 +1,7 @@
 package co.touchlab.kampstarter
 
-import co.touchlab.kampstarter.db.Breed
-import co.touchlab.kampstarter.db.KampstarterDb
-import co.touchlab.kampstarter.db.Lunch
+import co.touchlab.kampstarter.db.*
+import co.touchlab.kampstarter.models.Date
 import co.touchlab.kampstarter.models.DateAdapter
 import com.squareup.sqldelight.Query
 import com.squareup.sqldelight.db.SqlDriver
@@ -32,6 +31,24 @@ class DatabaseHelper(sqlDriver: SqlDriver) {
     suspend fun updateFavorite(breedId: Long, favorite: Boolean) = withContext(Dispatchers.Default) {
         dbRef.tableQueries.updateFavorite(favorite.toLong(), breedId)
     }
+
+    suspend fun insertPlace(name: String, latitude: Double, longitude: Double) = withContext(Dispatchers.Default) {
+        dbRef.lunchQueries.insertPlace(null, name, latitude, longitude)
+    }
+
+    suspend fun insertPerson(name: String, phone: String) = withContext(Dispatchers.Default) {
+        dbRef.lunchQueries.insertPerson(null, name, phone)
+    }
+
+    suspend fun insertLunch(name: String, personId: Long, placeId: Long, pinned: Boolean, date: Date) = withContext(Dispatchers.Default) {
+        dbRef.lunchQueries.insertLunch(null, name, personId, placeId, pinned, date)
+    }
+
+    fun selectAllPlaces(): Query<Place> = dbRef.lunchQueries.selectAllPlaces()
+
+    fun selectAllPeople(): Query<Person> = dbRef.lunchQueries.selectAllPeople()
+
+    fun selectAllLunches(): Query<Lunch> = dbRef.lunchQueries.selectAll()
 }
 
 fun Breed.isFavorited(): Boolean = this.favorite != 0L
